@@ -1,0 +1,22 @@
+# > suspicious user "darklord" processes
+ubuntu@ubuntu-VirtualBox:~$ ps -a -u darklord
+#   PID TTY          TIME CMD
+#  6621 pts/0    00:00:00 sudo
+#  6622 pts/0    00:00:00 su
+#  6623 pts/0    00:00:00 bash
+#  6855 pts/1    00:00:00 ps
+
+# > "root" user processes and port
+root@ubuntu-VirtualBox:/home/ubuntu# netstat -antp
+# Active Internet connections (servers and established)
+# Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+# tcp        0      0 0.0.0.0:56565           0.0.0.0:*               LISTEN      946/remotesec   
+
+# > "root" user suspicious processes
+root@ubuntu-VirtualBox:/home/ubuntu# ps -fp 946
+# UID        PID  PPID  C STIME TTY          TIME CMD
+# root       946   945  0 06:11 ?        00:00:00 /tmp/remotesec -k -l 56565
+
+# > "darklord" user delete and kill process
+root@ubuntu-VirtualBox:/home/ubuntu# deluser darklord
+root@ubuntu-VirtualBox:/home/ubuntu# kill -9 946

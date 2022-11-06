@@ -1,0 +1,27 @@
+
+# RECOMMENDATIONS
+
+# 1. Standard nomenclature for usernames
+# Develop standard names for allowed users and delete those
+# that do not follow the policy.
+# Example of user another suspicious user found at server:
+  $ ubuntu@ubuntu-VirtualBox:~$ cat /etc/passwd
+  # voldemort:x:0:0::/home/voldemort:
+
+# 2. Password manager and MFA authentication policy
+# Stablish a policy related to the usage of a password
+# manager for sensitive credential storage. Thus, enforce
+# Multi-factor Authentication (MFA) for organization's users
+# and apply its configuration on SSH servers.
+
+# 3. IPs Whitelist
+# Create a whitelist of IP address that are allowed to connect
+# remotely through SSH.
+
+# 4. Firewall policy
+# Develop policy related to firewalls that help mitigate
+# attacks.
+
+# 5. Isolate service
+# Configuration with regard to jailing the service
+# in order to avoid isolate potential attacks.

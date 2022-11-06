@@ -1,0 +1,14 @@
+# > "apache-group" group creation
+sudo groupadd apache-group
+
+# > "apache-user" user creation
+sudo useradd -m apache-user -p apacheadmin
+sudo usermod -aG apache-group apache-user
+
+# > apache2 server user configuration
+sudo nano /etc/apache2/envvars
+# export APACHE_RUN_USER=apache-group
+# export APACHE_RUN_GROUP=apache-user
+
+# > restart apache service
+sudo service apache2 restart

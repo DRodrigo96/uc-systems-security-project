@@ -1,0 +1,38 @@
+# > apache2 server metadata (before security configuration)
+root@ubuntu-VirtualBox:/home/ubuntu# curl --head localhost
+HTTP/1.1 200 OK
+Date: Sat, 05 Nov 2022 22:57:07 GMT
+Server: Apache/2.4.7 (Ubuntu)
+Last-Modified: Wed, 10 Jun 2020 08:30:54 GMT
+ETag: "2cf6-5a7b6a991f9e8"
+Accept-Ranges: bytes
+Content-Length: 11510
+Vary: Accept-Encoding
+Content-Type: text/html
+
+# > changes in apache2 server security configuration
+sudo nano /etc/apache2/conf-enabled/security.conf
+# ...
+# ServerTokens Minimal
+# ServerTokens OS
+# ServerTokens Full
+ServerTokens Prod
+# ...
+ServerSignature Off
+# ServerSignature On
+# ...
+
+# > restart apache service
+sudo service apache2 restart
+
+# > apache2 server metadata (after security configuration)
+root@ubuntu-VirtualBox:/home/ubuntu# curl --head localhost
+HTTP/1.1 200 OK
+Date: Sat, 05 Nov 2022 23:12:50 GMT
+Server: Apache
+Last-Modified: Wed, 10 Jun 2020 08:30:54 GMT
+ETag: "2cf6-5a7b6a991f9e8"
+Accept-Ranges: bytes
+Content-Length: 11510
+Vary: Accept-Encoding
+Content-Type: text/html
